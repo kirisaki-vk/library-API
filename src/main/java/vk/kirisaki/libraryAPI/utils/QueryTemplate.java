@@ -3,12 +3,16 @@ package vk.kirisaki.libraryAPI.utils;
 import vk.kirisaki.libraryAPI.utils.lambdas.PreparedStatementSetter;
 import vk.kirisaki.libraryAPI.utils.lambdas.RowMapper;
 
+import javax.management.Query;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class QueryTemplate {
     private final Connection connection = ConnectionProvider.getConnection();
+
+    public QueryTemplate() {
+    }
 
     public <T> List<T> executeQuery(String query, PreparedStatementSetter pss, RowMapper<T> rowMapper) {
         ArrayList<T> result = new ArrayList<>();
@@ -49,6 +53,7 @@ public class QueryTemplate {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                statement.close();
                 return rowMapper.mapRow(resultSet);
             }
         } catch (SQLException e) {
@@ -63,6 +68,7 @@ public class QueryTemplate {
             pss.setStatement(statement);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                statement.close();
                 return rowMapper.mapRow(resultSet);
             }
         } catch (SQLException e) {
