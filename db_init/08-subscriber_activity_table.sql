@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS public.subcriber_activity (
 	subscriber_id uuid NOT NULL,
 	book_id uuid NOT NULL,
 	action public.subscriber_action NOT NULL,
-	CONSTRAINT subcriber_activity_pk PRIMARY KEY (id)
+	CONSTRAINT subscriber_activity_pk PRIMARY KEY (id)
 );
 
 ALTER TABLE public.subcriber_activity OWNER TO prog_admin;
