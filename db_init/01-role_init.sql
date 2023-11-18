@@ -1,0 +1,9 @@
+CREATE ROLE prog_admin WITH 
+	CREATEDB
+	INHERIT
+	LOGIN
+	PASSWORD '123456';
+
+GRANT CREATE
+   ON SCHEMA public
+   TO prog_admin;
