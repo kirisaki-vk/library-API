@@ -1,4 +1,4 @@
-package vk.kirisaki.models;
+package vk.kirisaki.libraryAPI.models;
 
 public class Author extends User {
     public Author(String name, String reference, Sex sex) {

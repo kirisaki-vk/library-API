@@ -1,4 +1,4 @@
-package vk.kirisaki.repository;
+package vk.kirisaki.libraryAPI.repository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package vk.kirisaki;
+package vk.kirisaki.libraryAPI;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
