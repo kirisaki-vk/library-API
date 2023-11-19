@@ -52,7 +52,17 @@ public class AuthorCrudOperations implements CrudOperations<Author> {
 
     @Override
     public Author delete(Author toDelete) {
-        return null;
+        if (
+                QT.executeUpdate(
+                        "DELETE FROM author WHERE id=?",
+                        ps -> {
+                            ps.setInt(1, toDelete.getId());
+                        }
+                ) == 0
+        ) {
+            return null;
+        }
+        return toDelete;
     }
 
     private Author mapAuthor(ResultSet rs) throws SQLException {
