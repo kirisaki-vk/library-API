@@ -1,0 +1,2 @@
+Main-Class: vk.kirisaki.libraryAPI.Main
+Class-Path: lib/pgjdbc.jar
