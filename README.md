@@ -12,4 +12,4 @@ A standalone java program to implement the [library_management](https://github.c
 > NOTE: `PG_DATABASE_URL` is in the format `<host>/<database_name>`
 
 ## Database init scripts
-Init SQL scripts for the database can be found in [this](dbinit/) directory
+Init SQL scripts for the database can be found in [this](db_init/) directory
