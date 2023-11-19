@@ -53,7 +53,6 @@ public class QueryTemplate {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                statement.close();
                 return rowMapper.mapRow(resultSet);
             }
         } catch (SQLException e) {
@@ -68,7 +67,6 @@ public class QueryTemplate {
             pss.setStatement(statement);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                statement.close();
                 return rowMapper.mapRow(resultSet);
             }
         } catch (SQLException e) {
