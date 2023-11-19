@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.UUID;
 
 public class Book {
-    private UUID id = UUID.randomUUID();
+    private Integer id;
     private String title;
     private Integer page;
     private Date releaseDate;
@@ -13,6 +13,7 @@ public class Book {
     private Boolean available;
 
     public Book(String title, Integer page, Date releaseDate, Author author, Topic topic) {
+        this.id = null;
         this.title = title;
         this.page = page;
         this.releaseDate = releaseDate;
@@ -21,7 +22,7 @@ public class Book {
         this.available = true;
     }
 
-    public Book(UUID id, String title, Integer page, Date releaseDate, Author author, Topic topic, Boolean available) {
+    public Book(Integer id, String title, Integer page, Date releaseDate, Author author, Topic topic, Boolean available) {
         this.id = id;
         this.title = title;
         this.page = page;
@@ -31,7 +32,7 @@ public class Book {
         this.available = available;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
