@@ -48,7 +48,7 @@ public class UserCrudOperations implements CrudOperations<User> {
     private boolean isNotSaved(User user) {
         return QT.executeUpdate(
                 "INSERT INTO " + '"' + "user"+ '"' + " (name, sex) VALUES " +
-                        "(?,?)",
+                        "(?,?::sex)",
                 ps -> {
                     ps.setString(1, user.getName());
                     ps.setString(2, user.getSex().toString());
