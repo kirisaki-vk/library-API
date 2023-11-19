@@ -16,4 +16,12 @@ public class Author extends User {
     public Integer getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id + "\n" +
+                super.toString()+
+                '}';
+    }
 }

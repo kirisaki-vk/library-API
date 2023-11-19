@@ -19,4 +19,14 @@ public class SubscriberActivity {
         this.book = book;
         this.action = action;
     }
+
+    @Override
+    public String toString() {
+        return "SubscriberActivity{" +
+                "id=" + id +
+                ", subsciber=" + subsciber +
+                ", book=" + book +
+                ", action=" + action +
+                '}';
+    }
 }

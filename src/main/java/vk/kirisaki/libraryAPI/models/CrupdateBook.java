@@ -12,4 +12,13 @@ public class CrupdateBook {
         this.pageNumbers = pageNumbers;
         this.releaseDate = releaseDate;
     }
+
+    @Override
+    public String toString() {
+        return "CrupdateBook{" +
+                "name='" + name + '\'' +
+                ", pageNumbers=" + pageNumbers +
+                ", releaseDate=" + releaseDate +
+                '}';
+    }
 }

@@ -18,4 +18,12 @@ public class Subsciber extends User {
     public Integer getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Subsciber{" +
+                "id=" + id + "\n"+
+                super.toString()+
+                "\n}";
+    }
 }

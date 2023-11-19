@@ -50,4 +50,14 @@ public class User {
     public void setReference(String reference) {
         this.reference = reference;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", reference='" + reference + '\'' +
+                ", sex=" + sex +
+                '}';
+    }
 }
