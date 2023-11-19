@@ -14,6 +14,17 @@ public class BookCrudOperations implements CrudOperations<Book> {
     private final QueryTemplate QT = new QueryTemplate();
 
     @Override
+    public Book findById(Integer id) {
+        return QT.executeSingleQuery(
+                "SELECT *  FROM book WHERE id=?",
+                ps -> {
+                    ps.setInt(1, id);
+                },
+                this::mapBook
+        );
+    }
+
+    @Override
     public List<Book> findAll() {
         return QT.executeQuery(
                 "SELECT * FROM book;",
