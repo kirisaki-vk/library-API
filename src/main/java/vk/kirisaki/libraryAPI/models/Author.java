@@ -22,6 +22,6 @@ public class Author extends User {
         return "Author{" +
                 "id=" + id + "\n" +
                 super.toString()+
-                '}';
+                "\n}";
     }
 }
