@@ -25,49 +25,32 @@ public class BookCrudOperations implements CrudOperations<Book> {
     public List<Book> saveAll(List<Book> toSave) {
         for (Book book :
                 toSave) {
-            if (
-                    QT.executeUpdate(
-                            "INSERT INTO book ( " +
-                                    "title," +
-                                    "topic," +
-                                    "author_id," +
-                                    "page ) " +
-                                    "VALUES (?,?,?,?)",
-                            ps -> {
-                                ps.setString(1, book.getTitle());
-                                ps.setString(2, book.getTopic().toString());
-                                ps.setString(3, book.getAuthor().getId().toString());
-                                ps.setInt(4, book.getPage());
-                            }
-                    ) == 0
-            ) {
-                return null;
-            }
+            if (executeSave(book)) return null;
         }
         return toSave;
     }
 
     @Override
     public Book save(Book toSave) {
-        if (
-                QT.executeUpdate(
-                        "INSERT INTO book ( " +
-                                "title," +
-                                "topic," +
-                                "author_id," +
-                                "page ) " +
-                                "VALUES (?,?,?,?)",
-                        ps -> {
-                            ps.setString(1, toSave.getTitle());
-                            ps.setString(2, toSave.getTopic().toString());
-                            ps.setString(3, toSave.getAuthor().getId().toString());
-                            ps.setInt(4, toSave.getPage());
-                        }
-                ) == 0
-        ) {
-            return null;
-        }
+        if (executeSave(toSave)) return null;
         return toSave;
+    }
+
+    private boolean executeSave(Book toSave) {
+        return QT.executeUpdate(
+                "INSERT INTO book ( " +
+                        "title," +
+                        "topic," +
+                        "author_id," +
+                        "page ) " +
+                        "VALUES (?,?,?,?)",
+                ps -> {
+                    ps.setString(1, toSave.getTitle());
+                    ps.setString(2, toSave.getTopic().toString());
+                    ps.setString(3, toSave.getAuthor().getId().toString());
+                    ps.setInt(4, toSave.getPage());
+                }
+        ) == 0;
     }
 
     @Override
