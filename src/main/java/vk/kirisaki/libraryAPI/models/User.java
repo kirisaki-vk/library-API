@@ -1,20 +1,33 @@
 package vk.kirisaki.libraryAPI.models;
 
-import java.util.UUID;
 
 public class User {
-    final UUID id = UUID.randomUUID();
+    private final Integer id;
     private String name;
     private String reference;
     private final Sex sex;
 
     public User(String name, String reference, Sex sex) {
+        this.id = null;
         this.name = name;
         this.reference = reference;
         this.sex = sex;
     }
 
-    public UUID getId() {
+    public User(String name, Sex sex) {
+        this.id = null;
+        this.name = name;
+        this.sex = sex;
+    }
+
+    public User(Integer id, String name, Sex sex) {
+        this.id = id;
+        this.name = name;
+        this.reference = null;
+        this.sex = sex;
+    }
+
+    public Integer getId() {
         return id;
     }
 

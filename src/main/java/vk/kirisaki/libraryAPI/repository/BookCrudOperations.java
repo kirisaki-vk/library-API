@@ -1,17 +1,16 @@
 package vk.kirisaki.libraryAPI.repository;
 
 import vk.kirisaki.libraryAPI.models.Book;
+import vk.kirisaki.libraryAPI.models.Topic;
 import vk.kirisaki.libraryAPI.utils.QueryTemplate;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class BookCrudOperations implements CrudOperations<Book> {
     private final QueryTemplate QT = new QueryTemplate();
+    private final AuthorCrudOperations authorRepo = new AuthorCrudOperations();
 
     @Override
     public Book findById(Integer id) {
@@ -70,7 +69,7 @@ public class BookCrudOperations implements CrudOperations<Book> {
                 QT.executeUpdate(
                         "DELETE FROM book WHERE id=?",
                         ps -> {
-                            ps.setString(1, toDelete.getId().toString());
+                            ps.setInt(1, toDelete.getId());
                         }
                 ) == 0
         ) {
@@ -81,13 +80,12 @@ public class BookCrudOperations implements CrudOperations<Book> {
 
     private Book mapBook(ResultSet rs) throws SQLException {
         return new Book(
-                UUID.fromString(rs.getString("id")),
+                rs.getInt("id"),
                 rs.getString("title"),
                 rs.getInt("page"),
                 rs.getDate("release_date"),
-                //TODO: get proper relations
-                null,
-                null,
+                authorRepo.findById(rs.getInt("author_id")),
+                Topic.valueOf(rs.getString("topic")),
                 rs.getBoolean("available")
         );
     }
