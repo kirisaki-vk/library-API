@@ -8,3 +8,8 @@ CREATE TABLE IF NOT EXISTS public.subscriber (
 );
 
 ALTER TABLE public.subscriber OWNER TO prog_admin;
+
+INSERT INTO subscriber (reference, user_id) VALUES
+('SUB00001', 2),
+('SUB00002', 6),
+('SUB00003', 4);

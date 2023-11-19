@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS public.subcriber_activity (
+CREATE TABLE IF NOT EXISTS public.subscriber_activity (
 	id serial,
 	"timestamp" timestamp NOT NULL DEFAULT current_timestamp,
 	subscriber_id integer NOT NULL,

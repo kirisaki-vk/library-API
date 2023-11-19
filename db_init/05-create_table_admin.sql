@@ -8,3 +8,8 @@ CREATE TABLE IF NOT EXISTS public.admin (
 );
 
 ALTER TABLE public.admin OWNER TO prog_admin;
+
+INSERT INTO admin (reference, user_id) VALUES
+('ADM00001', 1),
+('ADM00002', 3),
+('ADM00003', 5);

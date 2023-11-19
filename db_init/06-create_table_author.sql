@@ -8,3 +8,8 @@ CREATE TABLE IF NOT EXISTS public.author (
 );
 
 ALTER TABLE public.author OWNER TO prog_admin;
+
+INSERT INTO author (reference, user_id) VALUES
+('ATH00001', 3),
+('ATH00002', 4),
+('ATH00003', 6);
