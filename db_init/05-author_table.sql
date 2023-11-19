@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS public.author (
-	id uuid NOT NULL DEFAULT gen_random_uuid(),
-	user_id uuid NOT NULL,
+	id serial,
+	user_id integer NOT NULL,
 	reference varchar NOT NULL,
 	CONSTRAINT author_pk PRIMARY KEY (id),
 	CONSTRAINT user_id_uq UNIQUE (user_id),

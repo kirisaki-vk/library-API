@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS public.admin (
-	id uuid NOT NULL DEFAULT gen_random_uuid(),
+	id serial,
 	reference varchar NOT NULL,
-	user_id uuid NOT NULL,
+	user_id integer NOT NULL,
 	CONSTRAINT admin_pk PRIMARY KEY (id),
 	CONSTRAINT unique_user_id UNIQUE (user_id),
 	CONSTRAINT reference_uq UNIQUE (reference)

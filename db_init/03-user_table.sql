@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS public."user" (
-	id uuid NOT NULL DEFAULT gen_random_uuid(),
+	id serial,
 	name varchar NOT NULL,
 	sex public.sex NOT NULL,
 	CONSTRAINT user_pk PRIMARY KEY (id)
