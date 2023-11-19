@@ -14,7 +14,7 @@ public class UserCrudOperations implements CrudOperations<User> {
     @Override
     public User findById(Integer id) {
         return QT.executeSingleQuery(
-                "SELECT * FROM 'user' WHERE id=?",
+                "SELECT * FROM " + '"' + "user"+ '"' + " WHERE id=?",
                 ps -> {
                     ps.setInt( 1 ,id);
                 },
@@ -25,7 +25,7 @@ public class UserCrudOperations implements CrudOperations<User> {
     @Override
     public List<User> findAll() {
         return QT.executeQuery(
-                "SELECT * FROM user",
+                "SELECT * FROM " + '"' + "user"+ '"',
                 this::mapUser
         );
     }
@@ -47,7 +47,7 @@ public class UserCrudOperations implements CrudOperations<User> {
 
     private boolean isNotSaved(User user) {
         return QT.executeUpdate(
-                "INSERT INTO user (name, sex) " +
+                "INSERT INTO " + '"' + "user"+ '"' + " (name, sex) VALUES " +
                         "(?,?)",
                 ps -> {
                     ps.setString(1, user.getName());
@@ -66,7 +66,7 @@ public class UserCrudOperations implements CrudOperations<User> {
     public User delete(User toDelete) {
         if(
                 QT.executeUpdate(
-                        "DELETE FROM user WHERE id=?",
+                        "DELETE FROM " + '"' + "user" + '"' + " WHERE id=?",
                         ps -> {
                             ps.setInt(1, toDelete.getId());
                         }
@@ -87,7 +87,7 @@ public class UserCrudOperations implements CrudOperations<User> {
 
     private List<User> getLast(Integer count) {
         return QT.executeQuery(
-                "SELECT * FROM user ORDER BY id DESC LIMIT " + count,
+                "SELECT * FROM " + '"' + "user"+ '"' + " ORDER BY id DESC LIMIT " + count,
                 this::mapUser
         );
     }
